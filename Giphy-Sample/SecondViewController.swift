@@ -8,38 +8,69 @@
 
 import UIKit
 import CoreData
+import GiphyCoreSDK
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController,  UITableViewDelegate, UITableViewDataSource {
+    
+    @IBOutlet weak var tableViiew: UITableView!
+    
+    var gifs = [String]()
+    
+    public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        return self.gifs.count
+    }
 
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell_second", for: indexPath) as!SecondViewTableViewCellVC
+        
+        let url = gifs[indexPath.row]
+        cell.setUrl(url: url)
+        
+        cell.backgroundColor = UIColor.white
+
+        return cell
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        //Storing core data
+        //loading core data
         let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Giphy")
         
-        let newGiphy = NSEntityDescription.insertNewObject(forEntityName: "Giphy", into: managedContext)
-        
-        newGiphy.setValue("https://media3.giphy.com/media/12msOFU8oL1eww/200.gif", forKey: "url")
-        newGiphy.setValue("350", forKey: "width")
-        newGiphy.setValue("200", forKey: "height")
-        
+        request.returnsObjectsAsFaults = false
         
         do
         {
-            try managedContext.save()
-            print ("Saved")
+            let results = try managedContext.fetch(request)
+            
+            if (results.count > 0) {
+                for result in results as! [NSManagedObject]{
+                    
+                    if let url = result.value(forKey: "url") as? String {
+                        //display user name
+                        print(url)
+                        self.gifs.insert(url, at:0)
+                    }
+                }
+                self.tableViiew.reloadData()
+            }
+            
         }
         catch
         {
-            //Process error
-            print("error")
+            
         }
-
         
         
     }
 
+
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

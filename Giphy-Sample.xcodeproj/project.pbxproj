@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2A00E9EF207230A500F00059 /* Fixed_height.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00E9EE207230A500F00059 /* Fixed_height.swift */; };
 		2A00E9F42072450100F00059 /* GiphyDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2A00E9F22072450100F00059 /* GiphyDataModel.xcdatamodeld */; };
+		2A00E9F62072936100F00059 /* SecondViewTableViewCellVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A00E9F52072936000F00059 /* SecondViewTableViewCellVC.swift */; };
 		2A2D00172070A4E700DC28A8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2D00162070A4E700DC28A8 /* AppDelegate.swift */; };
 		2A2D00192070A4E700DC28A8 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2D00182070A4E700DC28A8 /* FirstViewController.swift */; };
 		2A2D001B2070A4E700DC28A8 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2D001A2070A4E700DC28A8 /* SecondViewController.swift */; };
@@ -48,6 +49,7 @@
 		0D552BEE0EA825EDF6CAF8B8 /* Pods-Giphy-Sample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Giphy-Sample.release.xcconfig"; path = "Pods/Target Support Files/Pods-Giphy-Sample/Pods-Giphy-Sample.release.xcconfig"; sourceTree = "<group>"; };
 		2A00E9EE207230A500F00059 /* Fixed_height.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fixed_height.swift; path = ../../../codegen_5ac1f8e217db3/Fixed_height.swift; sourceTree = "<group>"; };
 		2A00E9F32072450100F00059 /* GiphyDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GiphyDataModel.xcdatamodel; sourceTree = "<group>"; };
+		2A00E9F52072936000F00059 /* SecondViewTableViewCellVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondViewTableViewCellVC.swift; sourceTree = "<group>"; };
 		2A2D00132070A4E700DC28A8 /* Giphy-Sample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Giphy-Sample.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2A2D00162070A4E700DC28A8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2A2D00182070A4E700DC28A8 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,7 @@
 				2A2D001A2070A4E700DC28A8 /* SecondViewController.swift */,
 				2A2D001C2070A4E700DC28A8 /* Main.storyboard */,
 				2AF0A3CC2070C18F003F96F9 /* TableViewCellViewController.swift */,
+				2A00E9F52072936000F00059 /* SecondViewTableViewCellVC.swift */,
 				2A69E38C2070B1B40028D048 /* TableViewModel.swift */,
 				2A5FDB912070D2D5009AEFE8 /* UIImage+Gif.swift */,
 				2A2D001F2070A4E700DC28A8 /* Assets.xcassets */,
@@ -473,6 +476,7 @@
 				2A2D00172070A4E700DC28A8 /* AppDelegate.swift in Sources */,
 				2A00E9EF207230A500F00059 /* Fixed_height.swift in Sources */,
 				2A2D00192070A4E700DC28A8 /* FirstViewController.swift in Sources */,
+				2A00E9F62072936100F00059 /* SecondViewTableViewCellVC.swift in Sources */,
 				2A69E38D2070B1B40028D048 /* TableViewModel.swift in Sources */,
 				2A00E9F42072450100F00059 /* GiphyDataModel.xcdatamodeld in Sources */,
 			);

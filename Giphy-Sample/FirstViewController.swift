@@ -12,6 +12,8 @@ import RxCocoa
 import Alamofire
 import SwiftyJSON
 import GiphyCoreSDK
+import CoreData
+
 
 class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -20,6 +22,10 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchText: UITextField!
     @IBOutlet weak var searchButton: UIButton!
+    
+    @IBAction func searchButtonTapped(_ sender: UIButton) {
+    }
+    
     
     var gifs = [GPHMedia]()
     
@@ -33,14 +39,21 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as!TableViewCellViewController
         
+        let media = gifs[indexPath.row]
+        cell.setMedia(media: media)
+        
+        cell.delegate = self
+        
         cell.backgroundColor = UIColor.yellow
-        let s = gifs[indexPath.row]
+        //        cell.imagePlaceHolder.image = UIImage.gif(url: url);
+        //        cell.favouriteButton.setTitle("Save", for:.normal)
+        //        
         
-        let url = s.images!.fixedHeight!.gifUrl!
-        print(url)
-        cell.imagePlaceHolder.image = UIImage.gif(url: url);
-        cell.favouriteButton.setTitle("Save", for:.normal)
         
+
+        
+//        let url = media.images!.fixedHeight!.gifUrl!
+//        print(url)
         return cell
     }
     
@@ -88,18 +101,47 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
        
 //        makeRequest()
         // Do any additional setup after loading the view, typically from a nib.
-        
         _ = searchText.rx.text.map { $0 ?? ""}.bindTo(tableViewModel.searchText)
         _ = tableViewModel.isValid.bindTo(searchButton.rx.isEnabled)
-        
-//        _ = searchBar.rx.text.map { $0 ?? ""}.bindTo(tableViewModel.searchText)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func saveGifUrl(url: String) {
+        let managedContext = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+        
+        let newGiphy = NSEntityDescription.insertNewObject(forEntityName: "Giphy", into: managedContext)
+        
+        newGiphy.setValue(url, forKey: "url")
+        newGiphy.setValue("350", forKey: "width")
+        newGiphy.setValue("200", forKey: "height")
+        
+        do
+        {
+            try managedContext.save()
+            print ("Saved")
+        }
+        catch
+        {
+            //Process error
+            print("error")
+        }
+        
+    }
+    
+}
 
-
+extension FirstViewController: GiphyTableViewDelegate {
+    func didTapSaveButton(url: String) {
+        print(url)
+        saveGifUrl(url: url)
+    }
+    
+    func didTapUnSaveButton(url: String) {
+        
+    }
 }
 
