@@ -24,6 +24,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     @IBOutlet weak var searchButton: UIButton!
     
     @IBAction func searchButtonTapped(_ sender: UIButton) {
+        gifSeach(_client: client, query: tableViewModel.searchText.value )
     }
     
     
@@ -45,15 +46,7 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         cell.delegate = self
         
         cell.backgroundColor = UIColor.yellow
-        //        cell.imagePlaceHolder.image = UIImage.gif(url: url);
-        //        cell.favouriteButton.setTitle("Save", for:.normal)
-        //        
-        
-        
 
-        
-//        let url = media.images!.fixedHeight!.gifUrl!
-//        print(url)
         return cell
     }
     
@@ -62,8 +55,8 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
         
     }
     
-    func gifSeach(_client: GPHClient, query: String) {
-        let op = _client.search("cats") { (response, error) in
+    func gifDefault(_client: GPHClient) {
+        let op = _client.trending() { (response, error) in
             if let error = error as NSError? {
                 // Do what you want with the error
                 print("Error")
@@ -85,21 +78,47 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
 
     }
     
+    func gifSeach(_client: GPHClient, query: String) {
+        self.gifs.removeAll()
+        self.tableView.reloadData()
+
+        let op = _client.search(query) { (response, error) in
+            if let error = error as NSError? {
+                // Do what you want with the error
+                print("Error")
+            }
+            
+            if let response = response, let data = response.data, let pagination = response.pagination {
+                print(response.meta)
+                print(pagination)
+                for result in data {
+                    print(result)
+                    self.gifs.insert(result, at:0)
+                }
+                self.tableView.reloadData()
+            } else {
+                print("No Results Found")
+            }
+        }
+        self.tableView.reloadData()
+        
+    }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         client = GPHClient(apiKey: "jIrEVGxYB4cKk1qSzAsmnQ2vmZ09xH6B")
         DispatchQueue.global(qos: .background).async {
             print("This is run on the background queue")
             
-            self.gifSeach(_client: self.client, query: "cat")
+            self.gifDefault(_client: self.client)
             DispatchQueue.main.async {
                 print("This is run on the main queue, after the previous code in outer block")
                 self.tableView.reloadData()
 
             }
         }
-       
-//        makeRequest()
+    
         // Do any additional setup after loading the view, typically from a nib.
         _ = searchText.rx.text.map { $0 ?? ""}.bindTo(tableViewModel.searchText)
         _ = tableViewModel.isValid.bindTo(searchButton.rx.isEnabled)
