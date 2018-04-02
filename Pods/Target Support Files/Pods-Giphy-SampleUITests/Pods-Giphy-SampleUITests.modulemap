@@ -1,0 +1,6 @@
+framework module Pods_Giphy_SampleUITests {
+  umbrella header "Pods-Giphy-SampleUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   type = "0"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Giphy-Sample/TableViewModel.swift"
+            timestampString = "544257822.627666"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "10"
+            endingLineNumber = "10">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Giphy-Sample/TableViewModel.swift"
+            timestampString = "544257454.178936"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "9"
+            endingLineNumber = "9">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Giphy_Sample.TableViewModel.init (images : RxSwift.Variable&lt;Swift.String&gt;, searchText : RxSwift.Variable&lt;Swift.String&gt;) -&gt; Giphy_Sample.TableViewModel"
+                  moduleName = "Giphy-Sample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnhe/projects/giphy/Giphy-Sample/Giphy-Sample/TableViewModel.swift"
+                  timestampString = "544257454.184074"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "0"
+                  endingLineNumber = "0"
+                  offsetFromSymbolStart = "4">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Giphy_Sample.TableViewModel.init () -&gt; Giphy_Sample.TableViewModel"
+                  moduleName = "Giphy-Sample"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/johnhe/projects/giphy/Giphy-Sample/Giphy-Sample/TableViewModel.swift"
+                  timestampString = "544257454.1869839"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "14"
+                  endingLineNumber = "14"
+                  offsetFromSymbolStart = "4">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
